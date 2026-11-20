@@ -7,10 +7,9 @@
 #                          constraints, to rank whatever offers survived.
 # No classes, no decorators, no fancy logic in this file on purpose -
 # it is meant to be nothing but numbers and short text, so it is easy to
-# read and easy to change a single value later without touching any
+# read and easy to change a single value in the future without touching any
 # other file.
-# This file contains no real personal data - every name, number and
-# preference below is fictional, written for this course project only.
+
 
 
 # Every profile applies these 3 rules too, in addition to its own rules
@@ -44,12 +43,12 @@ SOFT_CRITERIA = (
 # gets multiplied directly against a normalised 0-100 score, so it has
 # to be a plain fraction of 1.0, not a whole number like 20.
 # Every profile's weights must add up to 1.0 (checked by the function
-# near the bottom of this file).
+# near the bottom of this file). Normalization section 2.2 in report. 
 
 
 # ---------------------------------------------------------------------
 # Profile 1: Practical
-# This is the student's own real travel-booking preferences.
+# This is my own real travel-booking preferences in ideal world when I travel.
 # ---------------------------------------------------------------------
 PRACTICAL = {
     # display_name is a string because it is only ever shown as text on
@@ -212,8 +211,7 @@ REVIEW_FOCUSED = {
 
 # ---------------------------------------------------------------------
 # Profile 5: Leisure
-# A relaxed, comfort- and experience-focused tourist profile - this one
-# replaced the earlier "Balanced / Neutral" idea entirely.
+# A relaxed, comfort- and experience-focused tourist profile.
 # ---------------------------------------------------------------------
 LEISURE = {
     "display_name": "Leisure",

@@ -12,8 +12,7 @@
 # read through its get_ method, not changed directly from outside the
 # class.
 #
-# This file contains no real personal data - it only describes the
-# SHAPE that fictional course-project data will be stored in.
+#
 
 
 class Destination:

@@ -4,14 +4,14 @@
 #   search - "load the data, check the search is valid, then for each
 #             of the 5 fixed profiles, filter -> score -> explain, and
 #             print + save the result." (everything this file did
-#             before booking.py was wired in)
+#             before booking.py was added in)
 #   book   - "take one real offer_id from a search's results and a seat
 #             count, check Layer 4's rules, and save a real booking."
 # Every other file in busbidder/ only defines functions - nothing runs
 # on its own until this file calls them in the right order.
 #
-# This is also where Layer 3 of the validation framework (see
-# validation-rules.md) lives: valid_dates, the rule that says a
+# This is also where Layer 3 of the validation framework (section 3.1 report)
+# lives: valid_dates, the rule that says a
 # traveller's search dates must not be in the past. It belongs here
 # and nowhere else, because it is the only rule that depends on the
 # real-world date the program happens to be run on, not on anything
@@ -19,7 +19,7 @@
 #
 # This file contains no real personal data - every destination, date
 # and price it prints comes from the fictional dataset generated for
-# this course project.
+# this project.
 
 import argparse
 import sys
@@ -119,13 +119,13 @@ def resolve_destination_id(typed_text, destinations):
     Returns the matching destination_id string, or None if typed_text
     does not match any real ID or any real name.
     """
-    # Try it as an ID first: destination_id values are always written
+    # Trying it as an ID first: destination_id values are always written
     # the same exact way everywhere else in this project ("D" plus 2
     # digits), so this is a plain, case-sensitive dictionary lookup.
     if typed_text in destinations:
         return typed_text
 
-    # Not a known ID - try it as a name instead. .strip() removes any
+    # Not a known ID - trying it as a name instead. .strip() removes any
     # accidental leading/trailing spaces, and .lower() makes the
     # comparison ignore capitalisation, so "Barcelona", "barcelona" and
     # "BARCELONA" are all treated as the same match.

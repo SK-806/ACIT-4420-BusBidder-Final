@@ -4,12 +4,12 @@
 # turn the good rows into Destination/Company/Offer objects (from
 # models.py). A row with a real problem (bad price, unknown destination,
 # wrong pattern, etc.) is REJECTED - it is logged and skipped, not
-# crashed on and not silently kept. This matches the spec's own wording:
+# crashed on and not silently kept. Matching the requirement for the design:
 # invalid records are rejected, not corrected, and the reason is written
 # to the log file so it can be checked afterwards.
 #
 # This file contains no real personal data - it only reads the
-# fictional, generated CSV files for this course project.
+# fictional, generated CSV files for this project.
 
 import csv
 import logging

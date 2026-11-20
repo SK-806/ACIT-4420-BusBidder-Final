@@ -9,13 +9,12 @@
 #
 # The 8 criterion functions below are registered in CRITERION_FUNCTIONS
 # using the @criterion(...) decorator instead of being called directly
-# by name. This is the course's "metaprogramming technique" requirement:
-# adding a 9th criterion later means writing one new function with
+# by name. adding a 9th criterion later means writing one new function with
 # @criterion("new_name") above it - nothing else in this file, or in
 # profiles.py, or anywhere else, needs to change.
 #
 # This file contains no real personal data - it only works on the
-# fictional offers generated for this course project.
+# fictional offers generated for this project.
 
 from busbidder.profiles import SOFT_CRITERIA
 

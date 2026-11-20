@@ -16,7 +16,7 @@
 #     straight out of profiles.py)
 #
 # This file contains no real personal data - it only works on the
-# fictional offers generated for this course project.
+# fictional offers generated for this project.
 
 from busbidder.profiles import MIN_SEATS_REQUIRED
 
