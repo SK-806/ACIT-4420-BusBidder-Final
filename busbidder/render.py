@@ -2,9 +2,7 @@
 # Its only job is to take the exact same results main.py already
 # computed and printed to the terminal, and also write them out as one
 # static HTML file - a side-by-side visual comparison of all 5 profiles
-# for the same destination/date search. This is the bonus presentation
-# layer mentioned in final-project-plan.md: the CLI output on its own
-# already satisfies the spec's interface requirement, this file is
+# for the same destination/date search. this file is
 # purely an extra, nicer way to look at the same numbers.
 #
 # This file never recomputes anything itself - it only turns numbers
@@ -16,7 +14,7 @@
 #
 # This file contains no real personal data - every offer, price and
 # explanation it writes into the HTML page is fictional, generated for
-# this course project only.
+# this project only.
 
 import html
 from pathlib import Path

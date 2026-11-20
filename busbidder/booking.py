@@ -12,15 +12,14 @@
 # the pipeline:
 #   - seats_selected must be at least 1 (booking 0 or negative seats
 #     makes no sense)
-#   - seats_selected must be at most 6 (the course spec's own cap on how
-#     many seats one single booking is allowed to take, to stop one
+#   - seats_selected must be at most 6 (my own constraint enforced on the script to stop one
 #     booking from silently draining an entire offer's seats)
 # Both are checked by raising an error rather than quietly rounding the
 # number up or down, so a bad request is rejected outright instead of
 # being "fixed" into something the traveller did not actually ask for.
 #
-# This file contains no real personal data - "bookings" here only ever
-# refer to the fictional offers generated for this course project.
+# "bookings" file here only ever
+# refer to the fictional offers generated for this project.
 
 import csv
 import logging
@@ -92,7 +91,7 @@ def load_existing_bookings(path):
     dicts, one per booking already made. If the file does not exist
     yet (no bookings have ever been made), returns an empty list rather
     than raising an error - a fresh project with no bookings yet is a
-    completely normal, expected state.
+    completely normal, rather expected state.
     """
     bookings_path = Path(path)
     if not bookings_path.exists():

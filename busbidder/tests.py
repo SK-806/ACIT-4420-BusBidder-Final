@@ -3,6 +3,7 @@
 # project behaves correctly - normal cases, invalid-input cases,
 # missing-data cases, and boundary cases (the exact edge where a rule
 # switches from "allowed" to "rejected", e.g. 6 seats vs 7 seats).
+# Report section 3.4 'Unittest'
 # Every module up to now has only been verified BY HAND, one command at
 # a time, during the build - this file turns those same checks into
 # something that re-runs itself automatically, every time, with one
@@ -12,7 +13,7 @@
 # Built using Python's own built-in `unittest` module, not a third-
 # party testing library - this whole project only uses the Python
 # standard library, and unittest is already part of it, so no extra
-# installation is ever needed to run these tests.
+# installation is ever needed to run these tests. As mentioned in the requirements file as well. 
 #
 # Run with:  python3 -m busbidder.tests
 # (or, for more detail on each individual test:

@@ -2,7 +2,7 @@
 This file builds the fictional BusBidder Spain dataset (companies,
 destinations, offers) using a fixed random seed, so the same command
 always produces the exact same data files. That reproducibility is a
-deliberate design choice (see the report's traceability section): anyone
+deliberate design choice (see the report's section 3 result): anyone
 re-running this script gets byte-identical output, which is what lets the
 rest of the pipeline (filtering, scoring, booking) be demonstrated and
 re-checked consistently.
@@ -25,7 +25,7 @@ after the traveller profiles were updated to care about them:
   scenic_route  - True or False (about a 30% chance of True)
 
 Every one of the 75 company-destination pairs gets at least one offer
-(the spec's own stated minimum). On top of that, each pair also has a
+(the report spec's own stated minimum). On top of that, each pair also has a
 25% chance of getting a second offer on the same route - the same
 company and destination, just a different departure time, giving
 travellers more than one real choice on some routes without needing any
@@ -40,11 +40,11 @@ import random
 from datetime import datetime, timedelta
 from pathlib import Path
 
-SEED = 4420  # course code, chosen for a reproducible, documented seed
+SEED = 4420  # course code, chosen for a reproducible, documented seed, easy to remember and meaningful
 random.seed(SEED)
 
 # SEAT_TYPES is a list of strings - the three seat choices an offer can
-# have. A list (not a tuple) is fine here since nothing in this script
+# have. A list (instead of a tuple) is fine here since nothing in this script
 # ever changes it, but a list reads just as clearly for a simple lookup.
 SEAT_TYPES = ["window", "aisle", "other"]
 
@@ -115,9 +115,9 @@ DESTINATIONS = [
 ]
 
 # Companies: each row encodes a "personality" as parameters that drive the
-# offer generator below, instead of hand-authoring every offer. Suggested
+# offer generator below, instead of manually-authoring every offer. Suggested
 # profiles come from the spec; the exact numbers behind each profile are
-# our own design decision (documented here and in the report).
+# our own design decision (documented here and in the report section 1.2).
 #
 # price_mult        multiplies the distance-based base price
 # dur_mult          multiplies the distance-based base duration
@@ -175,7 +175,7 @@ COMPANIES = [
     ),
 ]
 
-BASE_PRICE_PER_KM = 0.065       # EUR per km before company multiplier
+BASE_PRICE_PER_KM = 0.065       # std EUR per km before company multiplier, taken from own research of Spain's one ofthe bus operator
 BASE_SPEED_KMH = 70             # assumed average bus speed incl. stops
 TRANSFER_PENALTY_MIN = 25       # extra minutes per transfer
 BASE_CO2_PER_KM = 0.06          # kg CO2 per km before company multiplier
@@ -206,7 +206,7 @@ def generate_offer(offer_num, destination, company):
     duration_minutes = max(45, round(duration))
 
     base_price = distance_km * BASE_PRICE_PER_KM
-    price = base_price * company["price_mult"] * random.uniform(0.92, 1.10)
+    price = base_price * company["price_mult"] * random.uniform(0.92, 1.10)  #report section 2.3
     price_eur = round(price, 2)
 
     co2 = distance_km * BASE_CO2_PER_KM * company["co2_mult"] * random.uniform(0.95, 1.05)
@@ -220,7 +220,7 @@ def generate_offer(offer_num, destination, company):
     arrival_time = minutes_to_hhmm(arrival_total_minutes)
     # A genuine overnight trip (e.g. a long NocheVia route) can legitimately
     # arrive on the next calendar day. Rather than pretending every trip
-    # fits before midnight, we record that explicitly, so loaders.py can
+    # fits before midnight, so it is recorded explicitly, in loaders.py which can
     # tell a real overnight arrival apart from a data-entry mistake.
     arrival_day_offset = arrival_total_minutes // (24 * 60)
 
@@ -275,8 +275,7 @@ def generate_offer(offer_num, destination, company):
 def build_offers():
     """
     Builds at least one offer for every (destination, company) pair - 15
-    destinations x 5 companies = 75 pairs, the spec's own stated minimum
-    ("Minimum dataset: 75 company-destination combinations"). On top of
+    destinations x 5 companies = 75 pairs, On top of
     that guaranteed first offer, each pair also has a
     SECOND_OFFER_PROBABILITY chance of getting a second offer too - the
     same route, just a different departure time - so the final total is
@@ -338,7 +337,7 @@ def write_invalid_offers():
     """
     A small, hand-picked file of deliberately broken rows, same column
     layout as offers.csv, one clear problem per row, for loaders.py to
-    reject and log rather than crash on.
+    reject and log rather than crash.
     """
     path = DATA_DIR / "offers_invalid.csv"
     fieldnames = [
@@ -352,6 +351,7 @@ def write_invalid_offers():
     # scenic_route, since those two fields are not the thing being
     # tested as broken in this file - only one field per row is wrong,
     # on purpose, so it is always obvious which rule caught it.
+    # report section 3.2
     bad_rows = [
         # negative price
         dict(offer_id="OFR-2026-9001", company_id="C1", destination_id="D01",

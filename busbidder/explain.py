@@ -29,7 +29,7 @@ CRITERION_PHRASES = {
     "rating": ("a high customer rating", "a low customer rating"),
     "departure": ("a departure time close to what this profile prefers",
                    "a departure time that does not match what this profile prefers"),
-    "seat": ("this profile's preferred seat type", "not this profile's preferred seat type"),
+    "seat": ("this profile's preferred seat type", "unfortunately, not this profile's preferred seat type"),
     "scenic": ("a scenic route", "not a scenic route"),
 }
 
