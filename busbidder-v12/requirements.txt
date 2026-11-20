@@ -1,0 +1,8 @@
+# MEMO: This file lists third-party Python packages BusBidder Spain
+# needs to run.
+#
+# There are none. Every module this project uses (csv, re, logging,
+# pathlib, random, datetime, argparse, html, unittest) is part of the
+# Python standard library, so nothing needs to be installed with pip.
+#
+# Needed: Python 3.9 or newer (built and tested on Python 3.13).
