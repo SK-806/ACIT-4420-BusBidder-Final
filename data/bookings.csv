@@ -1,0 +1,4 @@
+booking_reference,offer_id,destination_id,seats_selected,total_price_eur,booked_on_date
+BKG-2026-000001,OFR-2026-0010,D02,2,89.74,2026-11-19
+BKG-2026-000002,OFR-2026-0052,D09,2,29.12,2026-11-20
+BKG-2026-000003,OFR-2026-0056,D10,2,68.24,2026-11-20
